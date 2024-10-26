@@ -1,0 +1,50 @@
+managed implementation in class ZBP_R_YSALESORDER unique;
+strict ( 2 );
+with draft;
+define behavior for ZR_YSALESORDER alias item
+persistent table YSALESORDER
+draft table ZYSALESORDER_D
+etag master Locallastchaged
+lock master total etag Lastchanged
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Salesordernumber,
+   Salesorderitem;
+
+  field ( readonly )
+   Locallastchaged,
+   Lastchanged,
+   Createdby,
+   Changedby;
+
+  field ( readonly : update )
+   Salesordernumber,
+   Salesorderitem;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for YSALESORDER
+  {
+    Salesordernumber = salesordernumber;
+    Salesorderitem = salesorderitem;
+    Material = material;
+    Quantity = quantity;
+    Unit = unit;
+    Customer = customer;
+    Locallastchaged = locallastchaged;
+    Lastchanged = lastchanged;
+    Createdby = createdby;
+    Changedby = changedby;
+  }
+}

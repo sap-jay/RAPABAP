@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_YSALESORDER'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_YSALESORDER'
+  }
+}
+define service ZUI_YSALESORDER_O4 provider contracts odata_v4_ui {
+  expose ZC_YSALESORDER as item;
+}
