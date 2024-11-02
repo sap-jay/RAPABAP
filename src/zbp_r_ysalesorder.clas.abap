@@ -1,8 +1,6 @@
 class ZBP_R_YSALESORDER definition
   public
-  abstract
-  final
-  for behavior of ZR_YSALESORDER .
+  create private .
 
 public section.
 protected section.
