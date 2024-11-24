@@ -2,22 +2,22 @@
 @Metadata.allowExtensions: true
 @EndUserText.label: '###GENERATED Core Data Service Entity'
 define root view entity ZR_YSALESORDER
-  as select from YSALESORDER as item
+  as select from    ysalesorder as item
+    left outer join zsales_hdr  as head on head.vbeln = item.salesordernumber
 {
-  key salesordernumber as Salesordernumber,
-  key salesorderitem as Salesorderitem,
-  material as Material,
-  @Semantics.quantity.unitOfMeasure: 'Unit'
-  quantity as Quantity,
-  unit as Unit,
-  customer as Customer,
-  @Semantics.systemDateTime.localInstanceLastChangedAt: true
-  locallastchaged as Locallastchaged,
-  @Semantics.systemDateTime.lastChangedAt: true
-  lastchanged as Lastchanged,
-  @Semantics.user.createdBy: true
-  createdby as Createdby,
-  @Semantics.user.lastChangedBy: true
-  changedby as Changedby
-  
+  key item.salesordernumber as Salesordernumber,
+  key item.salesorderitem   as Salesorderitem,
+      item.material         as Material,
+      @Semantics.quantity.unitOfMeasure: 'Unit'
+      item.quantity         as Quantity,
+      item.unit             as Unit,
+      item.customer         as Customer,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
+      item.locallastchaged  as Locallastchaged,
+      @Semantics.systemDateTime.lastChangedAt: true
+      item.lastchanged      as Lastchanged,
+      @Semantics.user.createdBy: true
+      item.createdby        as Createdby,
+      @Semantics.user.lastChangedBy: true
+      item.changedby        as Changedby
 }

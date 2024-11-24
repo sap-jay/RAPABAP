@@ -1,0 +1,6 @@
+@ObjectModel.leadingEntity.name: 'ZC_BpGeneralDataTP'
+define service ZUI_BpGeneralData {
+  expose ZC_BPGENERALDATATP as BpGeneralData;
+  expose ZC_BPBANKDATATP as BpBankData;
+  expose ZC_BPADDRESSDATA01TP as BpAddressData;
+}

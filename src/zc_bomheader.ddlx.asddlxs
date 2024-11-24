@@ -1,0 +1,114 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'BOM',
+        typeNamePlural: 'BOMs',
+        title: {
+            type: #STANDARD,
+            label: 'Bill Of Material',
+            value: 'Stlnr'
+        } } }
+
+annotate entity ZC_BomHeader with
+{
+  
+  @EndUserText.label: 'BOM Category'
+  @UI.facet: [ {
+    label: 'BOM Header Info',
+    id: 'BomHeaderInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  },
+  {
+    label: 'BOM Item Information',
+    id: 'BomItemInfo',
+    purpose: #STANDARD,
+    position: 20 ,
+    type: #LINEITEM_REFERENCE,
+    targetElement: '_item'
+  } ]
+  @UI.identification: [ {
+    position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10
+  } ]
+  @UI.selectionField: [ {
+    position: 10
+  } ]
+  Stlty;
+
+  @EndUserText.label: 'BOM Number'
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  @UI.selectionField: [ {
+    position: 20
+  } ]
+  Stlnr;
+
+  @EndUserText.label: 'Alternative BOM'
+  @UI.identification: [ {
+    position: 30
+  } ]
+  @UI.lineItem: [ {
+    position: 30
+  } ]
+  @UI.selectionField: [ {
+    position: 30
+  } ]
+  Stlal;
+
+  @EndUserText.label: 'Internal Counter'
+  @UI.identification: [ {
+    position: 40
+  } ]
+  @UI.lineItem: [ {
+    position: 40
+  } ]
+  @UI.selectionField: [ {
+    position: 40
+  } ]
+  Stkoz;
+
+  @EndUserText.label: 'Valid From'
+  @UI.identification: [ {
+    position: 50
+  } ]
+  @UI.lineItem: [ {
+    position: 50
+  } ]
+  @UI.selectionField: [ {
+    position: 50
+  } ]
+  Datuv;
+
+  @EndUserText.label: 'Created By'
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  @UI.selectionField: [ {
+    position: 70
+  } ]
+  Createdby;
+
+  @EndUserText.label: 'Changed By'
+  @UI.identification: [ {
+    position: 80
+  } ]
+  @UI.lineItem: [ {
+    position: 80
+  } ]
+  @UI.selectionField: [ {
+    position: 80
+  } ]
+  Changedby;
+  
+}

@@ -1,0 +1,135 @@
+managed;
+strict ( 2 );
+with draft;
+define behavior for ZR_BpGeneralDataTP alias BpGeneralData
+implementation in class ZBP_R_BpGeneralDataTP unique
+persistent table ZBUT000
+draft table ZBPGENERALDAT00D
+etag master Locallastchanged
+lock master total etag Lastchanged
+authorization master( global )
+
+{
+  field ( readonly )
+   Locallastchanged,
+   Lastchanged,
+   Createdby,
+   Changedby;
+
+  field ( readonly : update )
+   Partner;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBUT000
+  {
+    Partner = PARTNER;
+    Type = TYPE;
+    Title = TITLE;
+    NameFirst = NAME_FIRST;
+    NameLast = NAME_LAST;
+    NameOrg1 = NAME_ORG1;
+    NameOrg2 = NAME_ORG2;
+    Searchterm1 = SEARCHTERM1;
+    Searchterm2 = SEARCHTERM2;
+    Birthdate = BIRTHDATE;
+    Grouping = GROUPING;
+    IsPerson = IS_PERSON;
+    Gender = GENDER;
+    Locallastchanged = LOCALLASTCHANGED;
+    Lastchanged = LASTCHANGED;
+    Createdby = CREATEDBY;
+    Changedby = CHANGEDBY;
+  }
+
+  association _BpBankData { create; with draft; }
+  association _BpAddressData { create; with draft; }
+}
+
+define behavior for ZR_BpBankDataTP alias BpBankData
+implementation in class ZBP_R_BpBankDataTP unique
+persistent table ZBUT0BANK
+draft table ZBPBANKDATA00D
+etag master Locallastchanged
+lock dependent by _BpGeneralData
+authorization dependent by _BpGeneralData
+
+{
+  field ( readonly )
+   Partner,
+   Locallastchanged;
+
+  field ( readonly : update )
+   BankID;
+
+
+  update;
+  delete;
+
+  mapping for ZBUT0BANK
+  {
+    Partner = PARTNER;
+    BankID = BANKID;
+    BankCtry = BANK_CTRY;
+    BankKey = BANK_KEY;
+    BankAcct = BANK_ACCT;
+    Iban = IBAN;
+    SwiftCode = SWIFT_CODE;
+    ValidFrom = VALID_FROM;
+    ValidTo = VALID_TO;
+    Locallastchanged = LOCALLASTCHANGED;
+    Lastchanged = LASTCHANGED;
+  }
+
+  association _BpGeneralData { with draft; }
+}
+
+define behavior for ZR_BpAddressData01TP alias BpAddressData
+implementation in class ZBP_R_BpAddressData01TP unique
+persistent table ZBUT020
+draft table ZBPADDRESSDAT00D
+etag master Locallastchanged
+lock dependent by _BpGeneralData
+authorization dependent by _BpGeneralData
+
+{
+  field ( readonly )
+   Partner,
+   Locallastchanged;
+
+  field ( readonly : update )
+   Addrnumber;
+
+
+  update;
+  delete;
+
+  mapping for ZBUT020
+  {
+    Partner = PARTNER;
+    Addrnumber = ADDRNUMBER;
+    ValidFrom = VALID_FROM;
+    ValidTo = VALID_TO;
+    Street = STREET;
+    HouseNum = HOUSE_NUM;
+    PostCode = POST_CODE;
+    City = CITY;
+    Country = COUNTRY;
+    Region = REGION;
+    ZtimeZone = ZTIME_ZONE;
+    AddrType = ADDR_TYPE;
+    Locallastchanged = LOCALLASTCHANGED;
+    Lastchanged = LASTCHANGED;
+  }
+
+  association _BpGeneralData { with draft; }
+}

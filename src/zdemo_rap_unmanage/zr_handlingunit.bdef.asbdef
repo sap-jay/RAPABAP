@@ -1,0 +1,27 @@
+unmanaged implementation in class zbp_r_handlingunit unique;
+strict ( 2 );
+
+define behavior for ZR_HandlingUnit alias huhhdr
+//late numbering
+lock master
+authorization master ( global )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) Huident;
+  association _item { create; }
+}
+
+define behavior for ZR_HandlingUnitItem alias huitem
+//late numbering
+lock dependent by _header
+authorization dependent by _header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) Huident, ItemNo;
+  association _header;
+}

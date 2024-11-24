@@ -1,0 +1,19 @@
+projection;
+strict ( 2 );
+
+define behavior for ZC_BomHeader alias header
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _item { create; }
+}
+
+define behavior for ZC_BomLineItem alias item
+{
+  use update;
+  use delete;
+
+  use association _header;
+}

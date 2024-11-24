@@ -1,0 +1,76 @@
+@Metadata.layer: #CORE
+@UI: {
+    headerInfo: {
+        typeName: 'BOMITEM',
+        typeNamePlural: 'BOMITEMSs',
+        title: {
+            type: #STANDARD,
+            label: 'Bill Of Material Items'
+        } },
+        presentationVariant: [{
+        visualizations: [{ type: #AS_LINEITEM }]
+         }] }
+
+annotate entity ZC_BomLineItem with
+{
+
+  @UI.facet: [{
+      label: 'BOM Item Information',
+    id: 'BomItemInfo',
+    purpose: #STANDARD,
+    position: 10 ,
+    type: #IDENTIFICATION_REFERENCE
+  }]
+  
+  
+  @EndUserText.label: 'BOM Category'
+  @UI.identification: [ {
+  position: 10
+  } ]
+  @UI.lineItem: [ {
+    position: 10
+  } ]
+  Stlty;
+  @UI.identification: [ {
+    position: 20
+  } ]
+  @UI.lineItem: [ {
+    position: 20
+  } ]
+  Stlnr;
+  @UI.identification: [ {
+    position: 30
+  } ]
+  @UI.lineItem: [ {
+    position: 30
+  } ]
+  Stlkn;
+  @UI.identification: [ {
+  position: 40
+  } ]
+  @UI.lineItem: [ {
+    position: 40
+  } ]
+  Stpoz;
+  @UI.identification: [ {
+  position: 50
+  } ]
+  @UI.lineItem: [ {
+    position: 50
+  } ]
+  Datuv;
+  @UI.identification: [ {
+    position: 60
+  } ]
+  @UI.lineItem: [ {
+    position: 60
+  } ]
+  Techv;
+  @UI.identification: [ {
+    position: 70
+  } ]
+  @UI.lineItem: [ {
+    position: 70
+  } ]
+  Aennr;
+}

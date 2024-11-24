@@ -1,0 +1,39 @@
+interface;
+use draft;
+define behavior for ZI_BpGeneralDataTP alias BpGeneralData
+use etag
+
+{
+  use create;
+  use update;
+  use delete;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+
+  use association _BpBankData { create; with draft; }
+  use association _BpAddressData { create; with draft; }
+}
+
+define behavior for ZI_BpBankDataTP alias BpBankData
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _BpGeneralData { with draft; }
+}
+
+define behavior for ZI_BpAddressData01TP alias BpAddressData
+use etag
+
+{
+  use update;
+  use delete;
+
+  use association _BpGeneralData { with draft; }
+}

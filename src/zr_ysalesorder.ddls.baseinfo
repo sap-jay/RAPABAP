@@ -3,7 +3,8 @@
 {
 "FROM":
 [
-"YSALESORDER"
+"YSALESORDER",
+"ZSALES_HDR"
 ],
 "ASSOCIATED":
 [],

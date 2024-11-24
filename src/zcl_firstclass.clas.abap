@@ -1,13 +1,22 @@
-class ZCL_FIRSTCLASS definition
-  public
-  create private .
+CLASS zcl_firstclass DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-protected section.
-private section.
+  PUBLIC SECTION.
+    INTERFACES if_oo_adt_classrun.
+  PROTECTED SECTION.
+  PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZCL_FIRSTCLASS IMPLEMENTATION.
+CLASS zcl_firstclass IMPLEMENTATION.
+  METHOD if_oo_adt_classrun~main.
+    out->write(
+      EXPORTING
+        data   = 'My First Class'
+    ).
+  ENDMETHOD.
+
 ENDCLASS.

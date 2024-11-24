@@ -1,0 +1,49 @@
+managed implementation in class zbp_r_bomheader unique;
+strict ( 2 );
+
+define behavior for ZR_BomHeader alias header
+persistent table ystko
+lock master
+authorization master ( instance )
+etag master Lastchangedatetime
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly : update ) Stlty, Stlnr;
+  association _item { create; }
+  mapping for ystko
+    {
+      Stlty   = stlty;
+      Stlnr   = stlnr;
+      Stlal   = stlal;
+      Stkoz   = stkoz;
+      datuv   = datuv;
+      techv   = techv;
+      aennr   = aennr;
+    }
+}
+
+define behavior for ZR_BomLineItem alias item
+persistent table ystpo
+lock dependent by _header
+authorization dependent by _header
+etag master Lastchangedatetime
+{
+  update;
+  delete;
+  field ( readonly : update ) Stlty, Stlnr, Stlkn, Stpoz;
+  mapping for ystpo
+    {
+      Stlnr   = stlnr;
+      Stlty   = stlty;
+      Stlkn   = stlkn;
+      Stpoz   = stpoz;
+      datuv   = datuv;
+      techv   = techv;
+      aennr   = aennr;
+      SgtCmkz = sgt_cmkz;
+    }
+  association _header;
+}

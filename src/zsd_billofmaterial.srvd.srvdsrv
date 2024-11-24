@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition - Bill Of Material'
+define service ZSD_BillOfMaterial {
+  expose ZC_BomHeader   as header;
+  expose ZI_BomLineItem as item;
+}
